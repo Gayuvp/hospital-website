@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 300px auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 70px;
+            color: #333;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 25px;
+            border: 1px solid #ccc;
+            border-radius: 2.5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background: #2b77c7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background: #eb0adf;
+        }
+        .error-message {
+            display: none;
+            text-align: center;
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (username === 'admin' && password === '123' && phone number === '1234567890') {
+                alert('Login successful!');
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+                alert('Invalid username or password.');
+            }
+        }
+    </script>
+</head>
+<body background="apollo2.jpg">
+    <div class="form-container">
+        <h1>LOGIN</h1>
+        <form action="Welcome hospital.html">
+            
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <input type="phone number" id="phone number" name="phone number" placeholder="Enter your phone number" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p id="error-message" class="error-message"></p>
+    </div>
+</body>
+</html>
+
+

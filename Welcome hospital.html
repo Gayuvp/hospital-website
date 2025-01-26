@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: rgb(237, 253, 148);
+        }
+        header {
+            background: rgba(240, 230, 178, 0.829);
+            padding: 25px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: rgb(241, 24, 8);
+            text-decoration: wavy underline black;
+            margin-left: 250px;
+            font-size: 25px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #054605;
+        }
+        .welcome-section {
+            text-align: center;
+            padding: 100px 20px;
+            
+            margin: 250px;
+            border-radius: 55px;
+        }
+        .welcome-section h2 {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        .welcome-section p {
+            font-size: 20px;
+            line-height: 2.5;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <a href="Welcome hospital.html" onclick="navigateTo('Home')">HOME</a>
+            <a href="About us.html" onclick="navigateTo('About Us')">ABOUT US</a>
+            <a href="our services.html" onclick="navigateTo('Services')">SERVICES</a>
+            <a href="chatbot.html" onclick="navigateTo('Chatbot')">CHATBOT</a>
+            <a href="contact us.html" onclick="navigateTo('Contact')">CONTACT US</a>
+        </nav>
+    </header>
+    <div class="welcome-section">
+        <h1><b>WELCOME TO APOLLO HOSPIAL!!!!</b></h1>
+        <p><i>At Apollo Hospital, we are dedicated to delivering exceptional healthcare with a personal touch. Our team of experienced professionals and state-of-the-art facilities ensure comprehensive medical care for you and your loved ones. With a legacy of trust and a commitment to innovation, we strive to be your partner in health and well-being.
+
+            Explore our specialized departments, meet our expert doctors, and discover how we are transforming lives every day. Thank you for choosing Kauvery Hospital – where care meets excellence.</i></p>
+    </div>
+</body>
+</html>
+
+
+

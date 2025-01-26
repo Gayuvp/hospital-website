@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENT Specialist Profile</title>
+    <style>
+        /* Common styling across profiles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #34495E;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #34495E;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #34495E;
+        }
+
+        .btn-back:hover {
+            background-color: #2c3e50;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c0392b;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #34495E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr.Sandeep sindhu">
+            <h1>Dr. Sandeep sindhu</h1>
+            <h2>MBBS, MS (ENT)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>35+ years of experience in diagnosing and treating ENT disorders.</p>
+
+            <h3>Specialties:</h3>
+            <p>Sinusitis, Hearing Loss, Tonsillitis, and Balance Disorders.</p>
+
+            <h3>About</h3>
+            <p>
+                He is a skilled ENT specialist with expertise in treating a wide range of ear, nose, and throat conditions. 
+                His is committed to providing the highest quality care using advanced diagnostic tools and treatment techniques.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: sandeep@apollohospital.com</p>
+            <p>Phone: +91 98765 43210</p>
+        </div>
+
+        <a href="our services.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter any additional details"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

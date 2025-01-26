@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nephrologist Profile</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #34495E;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #34495E;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #34495E;
+        }
+
+        .btn-back:hover {
+            background-color: #2c3e50;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c0392b;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #34495E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr. Hareesha babu">
+            <h1>Dr. Hareesha babu</h1>
+            <h2>MD (Internal Medicine), DM (Nephrology)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>22+ years of experience specializing in kidney care and transplantation.</p>
+
+            <h3>Specialties:</h3>
+            <p>Chronic Kidney Disease (CKD) Management, Dialysis, Kidney Transplantation, and Hypertension.</p>
+
+            <h3>About</h3>
+            <p>
+                He is a highly regarded nephrologist known for his dedication to comprehensive kidney care. 
+                His approach emphasizes early diagnosis and tailored treatment plans to enhance patient outcomes.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: hareesh@apollohospital.com</p>
+            <p>Phone: +91 91234 56789</p>
+        </div>
+
+        <a href="index.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter any additional details"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

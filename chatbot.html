@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo Hospital Chatbot</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Header Section */
+        .header {
+            width: 100%;
+            background: #e2427f9f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            width: 90%;
+            max-width: 500px;
+            margin-top: 200px;
+            background: rgb(245, 218, 218);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: center;
+        }
+
+        /* Chat Window */
+        .chat-window {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            height: 400px;
+            background: #d5b5e2;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chat-window::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .chat-window::-webkit-scrollbar-thumb {
+            background: #007BFF;
+            border-radius: 10px;
+        }
+
+        /* Chat Bubbles */
+        .chat-bubble {
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            max-width: 75%;
+            word-wrap: break-word;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .user {
+            background: #df8d21;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .bot {
+            background: #f1eff1;
+            color: #333;
+            align-self: flex-start;
+        }
+
+        /* Input Section */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #ffffff;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-input button:hover {
+            background: #17ce81;
+            transform: scale(1.05);
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+         CHATBOT
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <!-- Chat Window -->
+        <div class="chat-window" id="chatWindow">
+            <!-- Initial Message -->
+        </div>
+
+        <!-- Input Section -->
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatWindow = document.getElementById("chatWindow");
+        const userInput = document.getElementById("userInput");
+
+        // Initial bot greeting
+        const botGreetings = [
+            "Hello! Welcome to Apollo Hospital. How can I assist you today?",
+            "Hi there! Need help with appointments or hospital services? I'm here for you!",
+        ];
+        addBotMessage(botGreetings[Math.floor(Math.random() * botGreetings.length)]);
+
+        // Send Message Function
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                addUserMessage(message);
+                userInput.value = "";
+                processMessage(message);
+            }
+        }
+
+        // Add User Message
+        function addUserMessage(message) {
+            const bubble = document.createElement("div");
+            bubble.className = "chat-bubble user";
+            bubble.textContent = message;
+            chatWindow.appendChild(bubble);
+            scrollChatToBottom();
+        }
+
+        // Add Bot Message
+        function addBotMessage(message) {
+            const bubble = document.createElement("div");
+            bubble.className = "chat-bubble bot";
+            bubble.textContent = message;
+            chatWindow.appendChild(bubble);
+            scrollChatToBottom();
+        }
+
+        // Scroll Chat to Bottom
+        function scrollChatToBottom() {
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        // Process User Message
+        function processMessage(message) {
+            message = message.toLowerCase();
+
+            if (message.includes("appointment")) {
+                addBotMessage(
+                    "You can book an appointment by visiting our website or calling us at +91 98765 43210."
+                );
+            } else if (message.includes("services")) {
+                addBotMessage(
+                    "We offer services in cardiology, oncology, dermatology, and more. Let me know which department you need help with!"
+                );
+            } else if (message.includes("cardiology")) {
+                addBotMessage(
+                    "Welcome to our cardiology service! If you have any concerns regarding heart health, whether it's symptoms like chest pain, shortness of breath, or general inquiries about cardiovascular conditions, feel free to ask. Our team of experts is here to help guide you with accurate information and advice. Remember, heart health is crucial, so don’t hesitate to seek medical advice if needed!"
+                );
+            } else if (message.includes("oncology")) {
+                addBotMessage(
+                    "Welcome to our oncology service! If you have concerns about cancer prevention, symptoms, or treatments, our experienced specialists are here to provide the guidance and support you need. Whether you're seeking information on a specific type of cancer or wondering about treatment options, we are here to help you every step of the way."
+                );
+            } else if (message.includes("gynaecology")) {
+                addBotMessage(
+                    "Welcome to our gynaecology service! If you have questions related to reproductive health, menstrual issues, pregnancy, or menopause, feel free to ask. Our team of caring professionals is dedicated to providing you with the most accurate information and support for your unique health needs."
+                );
+            } else if (message.includes("neurology")) {
+                addBotMessage(
+                    "Welcome to our neurology service! If you're experiencing symptoms like headaches, dizziness, or difficulty with movement, or if you have concerns about conditions like epilepsy, stroke, or multiple sclerosis, we are here to provide expert advice and support to help you manage your neurological health."
+                );
+            } else if (message.includes("orthopedic")) {
+                addBotMessage(
+                    "Welcome to our orthopedic service! If you're dealing with joint pain, fractures, or mobility issues, our skilled orthopedic specialists are here to help. From musculoskeletal injuries to chronic conditions, we provide comprehensive care to get you back on your feet."
+                );
+            } else if (message.includes("surgeon")) {
+                addBotMessage(
+                    "Welcome to our surgical service! Whether you have a question about an upcoming procedure or need advice on post-surgical care, our team of expert surgeons is here to provide support. We’re committed to your recovery and ensuring the best possible outcomes."
+                );
+            } else if (message.includes("nephrology")) {
+                addBotMessage(
+                    "Welcome to our nephrology service! If you're experiencing kidney-related issues such as high blood pressure, kidney stones, or chronic kidney disease, we are here to offer expert advice and treatment. Protecting kidney health is essential, and our specialists are here to help you manage it effectively."
+                );
+            } else if (message.includes("ophthalmology")) {
+                addBotMessage(
+                    "Welcome to our ophthalmology service! If you're experiencing vision problems or eye discomfort, our specialists are here to help. Whether it’s a routine eye exam or concerns about conditions like glaucoma, cataracts, or diabetic retinopathy, we provide the care you need to maintain healthy vision."
+                );
+            } else if (message.includes("urology")) {
+                addBotMessage(
+                    "Welcome to our urology service! If you have concerns related to urinary health, prostate issues, or conditions like kidney stones, our team of experts is here to provide the necessary support and treatments. We’re dedicated to your well-being and making sure you feel comfortable addressing your urological health."
+                );
+            } else if (message.includes("pediatrics")) {
+                addBotMessage(
+                    "Welcome to our pediatrics service! We’re here to ensure the health and well-being of your child, from routine check-ups to managing illnesses and vaccinations. Our pediatric specialists provide compassionate care for your little ones at every stage of their growth and development."
+                );
+            } else if (message.includes("pulmonology")) {
+                addBotMessage(
+                    "Welcome to our pulmonology service! If you're experiencing respiratory issues like shortness of breath, persistent cough, or concerns about conditions such as asthma, COPD, or pneumonia, our specialists are here to provide expert care and support to improve your lung health."
+                );
+            } else if (message.includes("psychology")) {
+                addBotMessage(
+                    "Welcome to our psychology service! If you’re feeling overwhelmed, dealing with anxiety, depression, or looking for emotional support, our compassionate psychologists are here to listen and guide you through your mental health journey. Your emotional well-being is our priority."
+                );
+            } else if (message.includes("ent")) {
+                addBotMessage(
+                    "Welcome to our ENT service! If you're having issues with your ears, nose, or throat, whether it's related to hearing loss, allergies, sinus problems, or throat discomfort, our experienced specialists are here to provide the care and solutions you need."
+                );
+            } else if (message.includes("dentistry")) {
+                addBotMessage(
+                    "Welcome to our dental service! Whether you're in need of a routine check-up, dealing with a toothache, or looking for advice on oral hygiene, our dental experts are here to provide comprehensive care and help you maintain a healthy smile."
+                );
+            } else if (message.includes("plastic surgery")) {
+                addBotMessage(
+                    "Welcome to our plastic surgery service! Whether you’re considering cosmetic surgery or need reconstructive procedures after an injury or surgery, our board-certified plastic surgeons are here to provide professional advice and high-quality care to help you achieve your aesthetic or functional goals."
+                );
+            } else if (message.includes("neonatology")) {
+                addBotMessage(
+                    "Welcome to our neonatology service! Our team of specialists is dedicated to providing care for newborns, especially those born prematurely or with special medical needs. We’re here to ensure your baby gets the best possible start in life with expert, compassionate care."
+                );
+            } else if (message.includes("diabetology")) {
+                addBotMessage(
+                    "Welcome to our diabetology service! If you have concerns about managing diabetes, whether it’s Type 1 or Type 2, we’re here to help you navigate your condition with expert advice on diet, medication, and lifestyle changes to keep your blood sugar levels in check."
+                );
+            } else if (message.includes("dermatology")) {
+                addBotMessage(
+                    "Welcome to our dermatology service! Whether you're dealing with acne, eczema, psoriasis, or any other skin condition, our dermatologists are here to provide effective treatments and advice for maintaining healthy, clear skin. Your skin health is important to us!"
+                );
+            } else if (message.includes("where are the hospitals located in tamilnadu")) {
+                addBotMessage(
+                    "Chennai, Tamil Nadu:\n\n" +
+                    "Apollo Hospitals, Greams Road: 21 Greams Lane, Off Greams Road, Thousand Lights, Chennai – 600006.\n" +
+                    "Apollo Children's Hospital: 15, Shafi Mohammed Road, Greams Road, Thousand Lights, Chennai – 600006.\n" +
+                    "Apollo Speciality Hospital, Teynampet: 320 Anna Salai, Nandanam, Chennai – 600035.\n\n" +
+                    "Madurai, Tamil Nadu:\n\n" +
+                    "Apollo Speciality Hospital: 129, Palanganatham Road, Madurai – 625003.\n\n" +
+                    "Coimbatore, Tamil Nadu:\n\n" +
+                    "Apollo Hospitals: 70, Race Course Road, Coimbatore – 641018.\n\n" +
+                    "Trichy, Tamil Nadu:\n\n" +
+                    "Apollo Hospitals: 92, Srirangam Road, Trichy – 620006.\n\n" +
+                    "Erode, Tamil Nadu:\n\n" +
+                    "Apollo Hospitals: 67, P B Road, Erode – 638002."
+                );
+} else if (message.includes("Contact")) {
+                addBotMessage(
+                    "You can reach us at +91 98765 43210 or email us at contact@apollohospital.com."
+                );
+            }
+
+            else {
+                addBotMessage(
+                    "I'm sorry, I didn't quite understand that. Can you please provide more details?"
+                );
+            }
+        }
+    </script>
+</body>
+</html>
+

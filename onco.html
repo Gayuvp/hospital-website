@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oncology profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #8E44AD;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #8E44AD;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #8E44AD;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #8E44AD;
+        }
+
+        .btn-back:hover {
+            background-color: #b0d312;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #25cf8e;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #8E44AD;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #8E44AD;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #db8b12;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr.Aditya Narayan">
+            <h1>Dr.Aditya Narayan</h1>
+            <h2>MBBS, DM (Oncology)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>15+ years of experience in medical and radiation oncology.</p>
+
+            <h3>Specialties:</h3>
+            <p>Chemotherapy, Immunotherapy, and Palliative Care.</p>
+
+            <h3>About:</h3>
+            <p>
+                Dr.Aditya Narayan is a renowned oncologist with a passion for advancing cancer treatments. 
+                She provides individualized care and is committed to supporting patients and their families through every stage of treatment.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: adinara@kauveryhospital.com</p>
+            <p>Phone: +91 98765 43213</p>
+        </div>
+
+        <a href="our services.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your view"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

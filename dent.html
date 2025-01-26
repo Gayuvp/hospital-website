@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentist Profile</title>
+    <style>
+        /* Common styling across profiles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color:#e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #34495E;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #34495E;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #34495E;
+        }
+
+        .btn-back:hover {
+            background-color: #2c3e50;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c0392b;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #34495E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr. Gaurav jain">
+            <h1>Dr. Gaurav jain</h1>
+            <h2>BDS, MDS (Dentistry)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>22+ years of experience in general and cosmetic dentistry.</p>
+
+            <h3>Specialties:</h3>
+            <p>Root Canal Treatment, Dental Implants, Cosmetic Dentistry, and Pediatric Dental Care.</p>
+
+            <h3>About</h3>
+            <p>
+                He is a renowned dentist specializing in providing top-quality oral care with a focus on patient comfort. 
+                His combines expertise and modern technology to achieve the best results for her patients.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: gaurav@apollohospital.com</p>
+            <p>Phone: +91 76543 21098</p>
+        </div>
+
+        <a href="our services.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter any additional details"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

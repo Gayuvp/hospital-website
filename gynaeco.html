@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gynecology profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #C0392B;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #C0392B;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #C0392B;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #382dd3;
+        }
+
+        .btn-back:hover {
+            background-color: #20bfca;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c92c95;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #C0392B;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #C0392B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #1dd6cd;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr.Alaka Goswami">
+            <h1>Dr.Alaka Goswami</h1>
+            <h2>MBBS, MD (Gynecology)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>57 years of experience in obstetrics and gynecology.</p>
+
+            <h3>Specialties:</h3>
+            <p>High-Risk Pregnancy Care, Menstrual Disorders, and Infertility Treatment.</p>
+
+            <h3>About:</h3>
+            <p>
+                Dr.Alaka Goswami is a highly experienced gynecologist dedicated to women's health and wellness. 
+                She provides compassionate care for a wide range of gynecological and obstetric needs, with a focus on personalized treatments and advanced medical techniques.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: alakagoswami@kauveryhospital.com</p>
+            <p>Phone: +91 98765 43211</p>
+        </div>
+
+        <a href="our services.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter any additional details"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

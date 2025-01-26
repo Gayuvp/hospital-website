@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neonatologist Profile</title>
+    <style>
+        /* Common styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #34495E;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #34495E;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #34495E;
+        }
+
+        .btn-back:hover {
+            background-color: #2c3e50;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c0392b;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #34495E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+        
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEA8PEBAQEBUPEBcQDxAQDxAQEBUVFxUXFhUXFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGi0dICUrLS0tLS0tLS0tLS0tLTUtLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAACAwEEAAUGBwj/xABFEAABBAADBQQHBAcGBgMAAAABAAIDEQQSIQUxQVFhBiJxgQcTMpGhscFCUnLwFCMzYoKi0RU0U3Oy4SV0kqPC8SQ1Q//EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMEBf/EACURAQEAAgICAQQCAwAAAAAAAAABAhEDIRIxQQQyUYFh8BMicf/aAAwDAQACEQMRAD8A3YKIFLBRArRJgKm0AKm0wO0QKXakFBGAqbQAqQUAdqQgtTaAYCiBSwUQKAYCiBSwUyNhKAm1KIxVvPu1WNaDuPvCAhZaxwI3obQYlFqLUWgkrLUWotATai1FqLQBKLUWotASShJWEoSUBNrEKxAa8FEClAogUjNBUgpYKK0AdqQUAKm0AwFTaWCiBTIdqQUFqbQDAUyNpO5VpJQ0WSn4eQjz4ch/VK2T2eONyuoshrW6nvHluHnzS3YguNf+vchBsprYuiwy5duvDhkRHrwRytRiOlOVR5Vr4Qtj70N6eax7CPDmmCNMHJaY8jHPh/CpahHNFW5Ktbbctmk2stDai0wK1Ci1FoArUEqLQkoCSVBKglCSghWoQ2pQGtBRApQKIFIzQUQKUCiBQDAVIKWCpBQDQVNpYKm0Ay1D5A0Fx3AWhBVHauJyty/e96cIOHeXvL3bhuH0W1hdeq1WCFAA681sINVy8ue67uLDUbWFXYo1Wwrdy2LGrKNaWyP80gdHqrYCB7VVEU3BLcVZlYqkinYZI4kaHUblQ9bZPAjeNFZzLU4x2SZpH2h71vxZ/Dm5sOttgCstLB+Oqm1u5RWstBai0GO1BKG1FoCSVBKElQSgCtYl2sQGuBRApQKIFANBUgpYKm0A21IKVakFANBRApQKkFANBWo2m63jxyj6rZgrXbRADwKJNihwH+9ko+KJ7i5C21tMIw8lopce2EW7nu3/ACVvAdqsPXfIB6G/hvXHljbXoY5SR1WFarwbS57B7fgk9l1Hqt1hsY13G+oRJo/ZyF1og4c1IeOaNBUncqcmq2E7LC1swIKmmUd61u1R3mH96vC9AVsFQxYzGr3Gz5FXx/dGfL9tNhlzMbwIJaQitIhGhPN1/AWjtdl9uCDtZaC1FpGO1FoLUWgDJQkoSUJKAO1KVmWIDXgogUkFECkDQUQKUCptMG2ptKtSCgGgqbS7U2gGF2ipS4Zxka9x9nS/vEbz16qw7UEDiNFETg4sA3NbXnmOb6KMstNePHc/bX49rHEBxbQ1ddfkJf8Aaey2i5Gl4bpmZG5wv8S6CXZQmHeDTysD5pUOxPV6ZLbfDKR7iuWZO3w6aM4vBkh2HZIA40HVpY4CzrvW77PTPeXDPudXI6K1iMA3L+xb4GgPcEWwsCGy2N2pcep5Jcmt9KwlkbPaRexoLddKXOYnamJ3Mtp8iLXQ7dDiQ0HLm0zLjcTstwk0kcBRyi3Gncz5pY72dm4ux7W2k2yYy5o4gDUe9W8D2j9YS2UZXAaiiCPLktdhMVtOAVJ+jzsG7K85iPPcU/8ASGYnK5rXRvB7zXCnDnuWuX4rCY33G+Y//ZUZwbdWmos9OKvNaABW4AALVYiYmdsQHG3dNNL6V80+Gd7Rz3rSxZ4/nRRmUSk2bQWulyGWotBai0AdqMyAlQSgDJQkoS5CSgDzKUq1iA14KIFJBRBykGgogUkFEHIBocpzJQcpDkwcHKbSQ5EHI2DmOog8jZ8BvVXZvdc5holsh114gGle2cRno8WlVKyvPHXXosOW/wC36dnB9n7dTs6vet2Gty60uWwOJoWol2u+UgNByfe5+CxxrpsX9oYkOcWRi6Fl3Dem7Ehpozak6lc9jZJmnPERbm0Q4WKF9eqdsrbr47EwDHAWHAEsPhy8Cnj+TrptqN3Gro6jfoq8OEil0rK4cOK1s+3nupzYy8c7DbUyYh394AII3t4lo37uKLrexO5psX7HrcAfEKlLs0NNnLfhvW7wWPbIwOBBsWk4qQHVFT21J0BHRVI8HbvWm81Hnz6dFbxBJNDiU2KLKZDemleAFf1V43WLKzyy/wCNZij3j5JNqJpLcTzOnhwS8y6MZqRxZ3eVpmZRaDMozKkmWoJS8yglAGShJQlyElAHaxLtYgNeCiBSQUQKkzQUWZJtFaCNDlNpWZTmQDbUgpQKm0A5ryDY4LG6knmbPilZkbCQQee7y3qOSdNuHKzLTb4EAgg8tVrpY5LuGTQHRjhbTXxHithA4Cuqgx0TXA8lyzp3NX/ak47r8Ob6OJB8CrLMa14AfFI3q0Ej4hW8jxuo9CmRNkGoa0cdC4FXjYOvklm04IwGlsja0s0ferH9sYev2rfAnKfcUTomv0e1/gTYRw7NhGojbfMgEoth3Sls/HBkuRhJZJdWCMrt5Hgd/vW4dOSqeDwzbLjvs15p71nb30N9dgOpU7QlLI6BJzAAuOlniAEDJQ0tutTWu5K25imuDGNIOWy6jYvgtsZuxz5ZeONrW5lmZLzKMy6HEZmWWl5lGZAMzKC5LtZmTAy5CXIC5QSjYHaxLtQjYUAUQKUCiBSM0FTmSrU2gG2ptKtZaCOtSHKcLhpJTljjfIeTGl3y3Lf4bsnK1jpsU4YeONpc/UPkocgNB+dE5Ni2RQ2LsqTFPyt0a323nc0fU9Fvu0uxhHAz1Q/YajmQfavreqZ6Oca2dmK9Wwtjjnyxkm3O7jScx4nd711eIhBBBFg6ELWccs1Wf+SzLceY4eYFoP5HQqxhpu9RRbf2WcJLp7Etlh+bT1F+apZTo4eX9Fw5Yauq9PHPym43kbgeStMhHD4FaSDFgb+7zB3LYx7RbzHWtVMml+S4WD+qU46ckkYsH/dU58XyNqNW07VsyAGgpkk00WuiltRi8VlFDeVWOG6jPPUKx01uobm6efFVsyXazMuuTTgt3dmZlGZLzLMyCMzKMyXmUZkAy1GZBaguQBlyglAXIS5AHmUpWZYg1EFSClAqbQDg5Ta3+wOyGIxOV7v1MZ1zOHfcP3W/Ur0LY3ZjC4YAsYHOH/6Ppz/Ll5J+JXJ57snsni8RRyeqafty233N3ldjszsNho6dLmndxzd1nk0b/MldVlU1SrURbaRh4msblY1rANzWgNHuC4f0vbUMWDZC00Z5KPg3X5lq7t2lryr01u/WYJv4j/OwK4l2XYTZgw2ChjAo1nf+J2p+YHkuhcy0jZwGRpHEX5cPhSuUnleyka3aOzWTxmORti/MdRyK872rgH4WQxuNt+y/gQd1/nhS9WLNCOa0+2tltniLTVtsN5dR5rLkx8517b8PJ4XV9POxKNxU+qY7gPklTwPheWPBr7JO/wAPEJkEdmwuC16OhNhHL4ko3N3J3qqQ0nKARtS+1WHOGiwuJcD6ua45Ha/q3Ekx30cL16dVvNi7M9c8D7I1cfoOq6XtHsdmKwsuFcABJHlaa9lw1Y4dQQD5Lq4cN9uP6jk11HlYcszLS7Mkdh5f0PFH1VOyNe4Ehp3Ua1y8iusxXZ7EsYJQwSMIsPhd6wVwNDWvJaXGxhLGttRmQZlGZSZlqLS8yzMgDtRaDMotAGSoLkFqCUAeZYl2sQaiHL0bsf2PDBHicSA5zqdHEdzRvBdzd04LhuzuE9fiYYzuzZnfhb3j8vivbMLIS0Ndvb7J5jgtMMflGd+FxrPipHHodEMT+BTSEVMADevvRfRLmOXvcOKbfFKgqTcV5V6cBRwT+TZPgWFeslvxXlPppZbcKesw6ey07lWJV6Jsb9mziMjSPNoWyC5TY+Ekfg46klzPw8T43Ne5pHdadCKXU4aEsbRcXHeSTafJr3sYmUqk7af+LXoDx+iuFJxVZCSayi78FGN7OxyPa7BNDPW1YBqTS6+676HyXIQvDeIrh0C9BZKZZDYBYQWhh3EaauHE2CtRtnYEAY6WOMDKf1jASW68W8vBZfUcFluUdX0/PJPCue9de434JMkrhQY3M97gxg394mh81YjbEHMaIyC94jbvolxoWF1mHwMUA9YWMkkZZZJI3RhykAMb9nQkc9Vhw8OXJenRy8s4522mz8P6kQx89Pc0uJP/AEn3rYSs3LUdmNp/pkTMQaDmGSN4F0HB2XQcLAv+Jb5zbC7rdV5vt4p6ZtnsbPE9rmh0zfZvUZTRceQ3arV9m+2OMwrRDA/1jBqc8RkAPEtA1HvW+l2SNobfxUOIJLIbOU2LYxrcrR+7b78l6Ng9lQwOiMUTIxRjIY0NFHvDd+H4q+r7T/Dz+PtxhZnBuNwsMl+0+Njoph/C/f5OW2m7IwYmIYjZ84c07mPsi/u5t7T0IXTbf7LYXGtLZom2RpI0APHgfovM9kYifYu0ThpHl0TnNz37LojoH+Lbu+hCmyX0ctitjMLJC8xyscxw3hw+I5jqkWvZ9sbGhxceSVo3dyQVnaebT9OK8l27sabByZJW6E9yQew8dDwPRZWNJdqNqLQZlGZIxlyguQZlGZAHaxLzLEB0/ovweaaaYjRjPVt8XGz8Gj3r0uAFtA6jgVynYLAGHCx2KdL+td/FWX+UBdew3S6cZrFjld1Yy2iY7gUMZTS0FZVUSQDoUiK290m6Oh5jh8Exrq0KmUbjy0KX8GLkvLfTKy2YU83TD/t2vTo3dwHpfwXnHphjuHBjiXze8wlVj7TXa9kqOCwbgQ7/AOLGA4aj2ANPctwuQ9GjizA4aNxJBja6Mnqxry3+bTzXXqc5ZVRiFzQbB3HQolik2lOCBdoaI7rq5j8j3oJ4rY9ta5CK42AdPkr2MZkf60bq/WAcQOPiAoxMGrXtr53xC6PLymr8s9eLzzbMrYfVTUSIpmSOA3kA2aXYbRyyRtezvZ252nd3S2wa8wuZ7ZYXK2QN3PFsH4joB56LqYYPVwxs/wAOIR6Di1gbp5hc/wBJLhnY6vq7MsMaHsbs8QwyuAy+vxDpAOAApo/0k+a6JV8FDkjjZ91oHnWvxVhVnd5WsJOnOdo9hF0jMfhmgYmAVyE8euaJ/kTR4FbHB4hk8DJYyacA9tinAg6tcOBBBBHA2tkuSh7QwM2pLs9gcc4DpC0Wxk7hmI03Zm0SfvEcyiWix1NLgPS1sXPAzGMaC7DaSD70Z/oT8V37dyVjcKyaOSJ4tsjSxw6EUU5dUrGi9H+1hisDC4nM6IepkJ3ktAyuPi0tK3W0MDHPG6KVoe14og8OoPA9VruzOxocE18MLMujQ5xNueGghrncL37qW6duSvs3h3aLZLsHO6Fxse1G/wC8w7j48D4LV5l6N6VcATDBOB+ycWPPR+7+YV5rzPMpq4bmUFyVmUZkgbmWJWZYgPdfVZX0BQoADoBSuMCyeO6cOCxnDxXTvcYfJ9I43cEIOqOljVQTgCh5hEFhSUrwutnmR8Vwnpeb+rwX+e8e+Ihd3AwgvHDNmb4EAn45lw3pc1jwX/M172kK59ya2XZNrv7Jwzo6ztw8To73Zmxs39DVea6zCTiRjXjTMAaO8dCuZ9HXe2XhL/wg33d36LeQD1WU/ZIAeOVaByeXfRy6bBYsWLFZczbFKpDY7nLVunwV9Vbo681eN60jJodpYTPPhxRIa50hvk2i0f8AU5q2r25hG2t7m34DUopazm+NVx6nVHhwC8fuA/E18lp63S3bqfhcClQ1SsVocdNFqDs1jHuxLGBspoSPAoyNHBx49FtQ61BCqXSaHDyBzQRxTFRZbCXDUWcw+qtB9ixre5Fx7G1fEuyyMf8AwnwKtnVVsSzM1w6JmEkzMaemvinYCdq4FmIhkhk1bI0tPTkR1Bo+S8C2lhXwTSQP9qJ5Yetbj4EUfNfRDgvN/SX2aklc3GQMzUzLiAC1ppvsv16aHwCk5XmxchLlEjS3Q/Qj3hASk0MzLEq1iA+icHLbRfEJpb81T2Y62Aclfbot8uqwE4aomFZdrMqyMwLCFAU2pUVfeHUV+fiuE9LcoEOEHH9LYR4ag/Nd1NpquD9Lsd4USf4UsZ/m/wB1rhO9prc+jg/8Lwf4XD3SOC6OLVuvVct6MX3syD918rfdK9dRhT3fM/MpUCw7sp9Wf4D05eSsKtiGW3TQjVp5FHhJ87b3EGnDkfzqps62qHJEoAPifonpWIGl8lMO+lYRZszr5npzCPCt1efvO08AB9bWRtprtBoOfRMwrKY0HfVnxOpWlvVTJ3s4IZDw5okDVnFUKJIxuJZEGueaDntjH4nmgmkqtfKdzei2j2vxfQJBuM2NWnUjl1H9Ena+0m4WHETuBd6qMyZARmdTdw929cVsv0kxTkR4kRwB7WvZIyQvY3vUWyaW0hXJsPQoDYJu83LUJezzWdvI/PVLa0t70ZBDtd9tcDxB4eKCDENDySQ3M2sriGm7Pv8AEWlZ0Gwcd6819LO1SI48Gc7WTfrZJQDRyE5Im8C4uF0eAC9CfiGkU1wceQNn3DVLZhWu1ka11HM0Oa11Efa5ZvkPNKXQsfPOPws0MjmTs9W8hrzH90OaCL61VqvmXpfpi2N+xxzBygm+Jjd/qHuXl9qL7XPRlrEu1iDfROzG90K+FS2b7A8FeW+XthEtOoT1VvUeKsk6rPKKiLRKDqoqlKgzstpHRcZ6VB/wzFOq6yH3PYu3XC+lDEt/QMTACDJLlayMEFxJcDdcBoNVfHU1HopmzYOVmgEeMlArk4Mf/wCRXZ4Xc7o4/Ncb6NsDJhmYiGfKx75hMyP1jHPymKME00ni0rr8Ke88fvfQJ31QsuVF1xv9YNx0kHTgfJXigeywpwujqwDeo4oJBYI5qvg3Zf1Z4at8OXkrJKmzVVvpTD77tjvEDd7/AIAq6qkJuQj7rfiSQPqrZKrMsfSChCkKFAazbezDiMrS8sa1riMtX6wimk2DoAXddVqYNnyymaVuRp9dK1zmvcHSZZgMpIHdaMhrx4arqnJbQANABx058Vvhz5Y46jn5Pp8c8t3+/hp2QeszjeXipg4XvJBab4Vw5Lmcd6M8C/2WywnPZ9W6wW6X7QNcdy7qqcOoSsZiAwMv7UgaPO1njjZY7M+Xy+FXD4Z8TGxRm2MaGNa8WQ0CgLHQJ2Hw2pc/KSRWgoAclaBUgKtsUsqqApRaxnyRsapptP2s2WcVgsRAPafGTH+Nveb8QF862vqJ+5eK+k/sq7DSnGRC4cQ+3gD9nIdSD+67eOtjkpv5Vjfhw9qUtYpU+k9m+w3wV1qxYujP2wgH/UKwd5WLFGSoJSVixQpDVxXbD+77U/FF/ojWLE8fZV5h2S/vmE/5hq94wnty+I/0hSsWuXpPytKVixYqVh7bPH6K0VixVl8CEYb25PL5uVh+4eKlYll7OekIWfVYsUwJ5oAsWJwFu3tWv257MP8Ant+qxYtsPuiavMTApWKMvYgWbj4poWLFORhk3LnfSB/9Xjf8r/yCxYj4Hy+eVixYpaP/2Q==" alt="Dr.S Ramakrishnan">
+                        <h1>Dr.S Ramakrishnan</h1>
+                        <h2>MD, DM (Neonatology)</h2>
+                    </div>
+            
+                    <div class="profile-details">
+                        <h3>Experience:</h3>
+                        <p>20+ years of experience in neonatal care and treating critically ill newborns.</p>
+            
+                        <h3>Specialties:</h3>
+                        <p>Premature Births, Neonatal Intensive Care, and High-Risk Deliveries.</p>
+            
+                        <h3>About</h3>
+                        <p>
+                            He is a renowned neonatologist dedicated to providing exceptional care for newborns. 
+                            His expertise in neonatal intensive care and high-risk deliveries has made her a trusted name in neonatology. 
+                            He is passionate about ensuring the best outcomes for critically ill and premature babies.
+                        </p>
+            
+                        <h3>Contact Information:</h3>
+                        <p>Email: rama@apollohospital.com</p>
+                        <p>Phone: +91 98234 56789</p>
+                    </div>
+            
+                    <a href="our services.html" class="btn-back">Back to Categories</a>
+                    <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+            
+                    <div class="appointment-form" id="appointmentForm">
+                        <h3>Book an Appointment</h3>
+                        <form>
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" name="date" required>
+            
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Enter any additional details"></textarea>
+            
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            
+                <script>
+                    function showAppointmentForm() {
+                        const form = document.getElementById('appointmentForm');
+                        form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+                    }
+                </script>
+            </body>
+            </html>
+            

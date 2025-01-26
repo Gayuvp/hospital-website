@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urologist Profile</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color:  #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #34495E;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #34495E;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #34495E;
+        }
+
+        .btn-back:hover {
+            background-color: #2c3e50;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c0392b;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #34495E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr. Sathish Marriwada">
+            <h1>Dr. Sathish Marriwada</h1>
+            <h2>MS, MCh (Urology)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>25+ years of experience in advanced urological procedures and treatments.</p>
+
+            <h3>Specialties:</h3>
+            <p>Kidney Stone Management, Prostate Surgery, Male Infertility Treatment, and Laparoscopic Urology.</p>
+
+            <h3>About</h3>
+            <p>
+                He is a highly experienced urologist specializing in diagnosing and treating complex urological conditions. 
+                His patient-focused approach and advanced surgical techniques make him a trusted expert in the field.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: marriwada@apollohospital.com</p>
+            <p>Phone: +91 98765 43210</p>
+        </div>
+
+        <a href="our services.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter any additional details"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

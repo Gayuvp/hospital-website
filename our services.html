@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>our services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 50px;
+        }
+
+        header {
+            background-color: #e2427f9f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 2em;
+        }
+
+        .categories-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            justify-content: center;
+        }
+
+        .category-box {
+            background-color: hsla(69, 100%, 71%, 0.664);
+            color: rgb(0, 0, 0);
+            width: 250px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgb(3, 27, 133);
+        }
+
+        .category-box a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OUR SERVICES</h1>
+    </header>
+
+    <section class="categories-container">
+        <div class="category-box"><a href="cardio.html" target="_blank">Cardiology</a></div>
+        <div class="category-box"><a href="onco.html" target="_blank">Oncology</a></div>
+        <div class="category-box"><a href="gynaeco.html" target="_blank">Gynaecology</a></div>
+        <div class="category-box"><a href="neuro.html" target="_blank">Nerurology</a></div>
+        <div class="category-box"><a href="ortho.html" target="_blank">Orthopedic</a></div>
+        <div class="category-box"><a href="surg.html" target="_blank">Surgeon</a></div>
+        <div class="category-box"><a href="nephro.html" target="_blank">Nephrology</a></div>
+        <div class="category-box"><a href="opthamo.html" target="_blank">Opthamalogy</a></div>
+        <div class="category-box"><a href="uro.html" target="_blank">Urology</a></div>
+        <div class="category-box"><a href="pedia.html" target="_blank">Pediatrics</a></div>
+        <div class="category-box"><a href="pulmo.html" target="_blank">Pulmonology</a></div>
+        <div class="category-box"><a href="psycho.html" target="_blank">Psychology</a></div>
+        <div class="category-box"><a href="ENT.html" target="_blank">ENT</a></div>
+        <div class="category-box"><a href="dent.html" target="_blank">Dentistry</a></div>
+        <div class="category-box"><a href="plastic surg.html" target="_blank">Plastic Surgery</a></div>
+        <div class="category-box"><a href="neonano.html" target="_blank">Neonatology</a></div>
+        <div class="category-box"><a href="diabeto.html" target="_blank">Diabetology</a></div>
+        <div class="category-box"><a href="dermo.html" target="_blank">Dermatology</a></div>
+    </section>
+
+    <script>
+        // Optional interactivity
+        document.querySelectorAll('.category-box a').forEach(link => {
+            link.addEventListener('click', () => {
+                alert(`Navigating to ${link.textContent} doctor profiles!`);
+            });
+        });
+    </script>
+</body>
+</html>
+
+

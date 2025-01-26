@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #34495E;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #34495E;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #eb2f17;
+        }
+
+        .btn-back:hover {
+            background-color: #2c3e50;
+        }
+
+        .btn-appointment {
+            background-color: #14d3c9;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c0392b;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #34495E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #ba1bda;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr.Jayavelu">
+            <h1>Dr.Jayavelu</h1>
+            <h2>MD, DM (Neurology)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>21+ years of experience in clinical and interventional neurology.</p>
+
+            <h3>Specialties:</h3>
+            <p>Stroke Management, Epilepsy, and Movement Disorders.</p>
+
+            <h3>About:</h3>
+            <p>
+                Dr.Jayavelu is a leading neurologist specializing in diagnosing and treating a wide range of neurological disorders. 
+                She is dedicated to providing patient-centered care with the latest advancements in medical technology.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: jayavelu@kauveryhospital.com</p>
+            <p>Phone: +91 98765 43212</p>
+        </div>
+
+        <a href="our services.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your view"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

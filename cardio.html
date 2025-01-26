@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('apollo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e0e244;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #2E3A87;
+        }
+
+        .profile-header h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #2E3A87;
+        }
+
+        .profile-header h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            font-size: 1.4em;
+            color: #2E3A87;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .btn-back, .btn-appointment {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+
+        .btn-back {
+            background-color: #2E3A87;
+        }
+
+        .btn-back:hover {
+            background-color: #10b19b;
+        }
+
+        .btn-appointment {
+            background-color: #E74C3C;
+            margin-left: 10px;
+        }
+
+        .btn-appointment:hover {
+            background-color: #c71276;
+        }
+
+        .appointment-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h3 {
+            color: #2E3A87;
+            margin-bottom: 10px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .appointment-form input,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .appointment-form button {
+            padding: 10px 20px;
+            background-color: #2E3A87;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .appointment-form button:hover {
+            background-color: #981ad3;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="data:image/jpeg;base64,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" alt="Dr. John Doe">
+            <h1>Dr.A.K.Bardhan</h1>
+            <h2>MD, DM (Cardiology)</h2>
+        </div>
+
+        <div class="profile-details">
+            <h3>Experience:</h3>
+            <p>15+ years of experience in interventional and clinical cardiology.</p>
+
+            <h3>Specialties:</h3>
+            <p>Heart Failure Management, Coronary Angioplasty, and Cardiac Arrhythmias.</p>
+
+            <h3>About:</h3>
+            <p>
+                Dr.A.K.Bardhan is a renowned cardiologist with extensive expertise in treating complex heart conditions. 
+                He has successfully performed thousands of interventional procedures and is committed to improving heart health through personalized care and cutting-edge technology.
+            </p>
+
+            <h3>Contact Information:</h3>
+            <p>Email: bardhan@kauveryhospital.com</p>
+            <p>Phone: +91 98765 43210</p>
+        </div>
+
+        <a href="our services.html" class="btn-back">Back to Categories</a>
+        <button class="btn-appointment" onclick="showAppointmentForm()">Book an Appointment</button>
+
+        <div class="appointment-form" id="appointmentForm">
+            <h3>Book an Appointment</h3>
+            <form>
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your view"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAppointmentForm() {
+            const form = document.getElementById('appointmentForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
+
